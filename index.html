@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Study Assistant</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f4ff;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 15px;
+        }
+        textarea, select, button {
+            width: 90%;
+            padding: 12px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        button {
+            background: #5746d8;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            text-align: left;
+            white-space: pre-wrap;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>AI Study Assistant</h1>
+    <p>Learn your subjects in simple English!</p>
+
+    <textarea id="topic" placeholder="Enter your subject and topic"></textarea>
+
+    <select id="marks">
+        <option value="2">2 Marks</option>
+        <option value="5">5 Marks</option>
+        <option value="10">10 Marks</option>
+        <option value="16">16 Marks</option>
+    </select>
+
+    <button onclick="generate()">Generate Study Prompt</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function generate() {
+    let topic = document.getElementById("topic").value;
+    let marks = document.getElementById("marks").value;
+
+    if (!topic.trim()) {
+        alert("Please enter a topic!");
+        return;
+    }
+
+    let answer = "Topic: " + topic + "\n";
+    answer += "Marks: " + marks + "\n";
+    answer += "Language: Simple English\n\n";
+
+    if (marks == 2) {
+        answer += "Give a short definition and two important points.";
+    } else if (marks == 5) {
+        answer += "Give an introduction, five points and an example.";
+    } else if (marks == 10) {
+        answer += "Give an introduction, headings, examples and conclusion.";
+    } else {
+        answer += "Give a detailed explanation with headings, diagrams, examples and conclusion.";
+    }
+
+    document.getElementById("result").innerText = answer;
+}
+</script>
+</body>
+</html>
